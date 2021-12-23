@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<img src="img/167.jpg" @click="show()" style="width: 500px; height: 400px;"/>
+		</div>
+		<script>
+			let v=new Vue({
+				el:"#app",
+				data:{
+					flag:0,
+					clickx:0,
+					clicky:0
+				},
+				methods:{
+					show(){
+						v.clickx=event.clientX;
+						v.clicky=event.clientY;
+						console.log(v.clickx+","+v.clicky);
+						
+						//子鼠的坐标为：x:31--100   y:39--182
+						if(v.flag==0&&v.clickx>=31&&v.clickx<=100&&v.clicky>=39&&v.clicky<=182){
+							v.flag=1;
+							console.log("第一次（子鼠）："+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						
+						//丑牛的坐标为：x:112--171   y:42--180
+						if(v.flag==1&&v.clickx>=112&&v.clickx<171&&v.clicky>=42&&v.clicky<180){
+							v.flag=2;
+							console.log("第二次（丑牛）："+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						
+						//寅虎的坐标为：x:192--253   y:38--178
+						if(v.flag==2&&v.clickx>192&&v.clickx<253&&v.clicky>=38&&v.clicky<=178){
+							v.flag=3;
+							console.log("第三次（寅虎）："+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						
+						//卯兔的坐标为：x:267--328   y:40--180
+						if(v.flag==3&&v.clickx>267&&v.clickx<328&&v.clicky>=40&&v.clicky<=180){
+							v.flag=4;
+							console.log("第四次（卯兔）："+v.flag);
+							console.log(v.clickx+","+v.clicky);
+						}
+						
+						//龙的坐标为：x:345--406   y:40--177
+						if(v.flag==4&&v.clickx>345&&v.clickx<406&&v.clicky>=40&&v.clicky<=177){
+							v.flag=5;
+							console.log("第五次（龙）："+v.flag);
+							console.log(v.clickx+","+v.clicky);
+							alert("5次顺序点击结束！")
+						}
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
